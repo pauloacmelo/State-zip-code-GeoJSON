@@ -1,0 +1,11 @@
+{
+  "name": "State-zip-code-GeoJSON",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:luisp128/State-zip-code-GeoJSON.git",
+  "author": "Paulo André <pauloacmelo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@turf/turf": "^6.5.0"
+  }
+}
