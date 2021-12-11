@@ -39,7 +39,7 @@ const fs = require("fs");
 const turf = require("@turf/turf");
 const j = JSON.parse(fs.readFileSync(CALIFORNIA_ZIPCODES_PATH));
 
-fs.writeFileSync("output/geojson.json", JSON.stringify({
+fs.writeFileSync("output/shopify_delivery.geojson", JSON.stringify({
   type: "FeatureCollection",
   features: Object.entries(pricing).map(([name, zipcodes]) => {
     const features = j.features.filter((f) =>
