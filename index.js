@@ -38,16 +38,16 @@ const pricing = {
 const fs = require("fs");
 const turf = require("@turf/turf");
 const j = JSON.parse(fs.readFileSync(CALIFORNIA_ZIPCODES_PATH));
-
+const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
 fs.writeFileSync("output/shopify_delivery.geojson", JSON.stringify({
   type: "FeatureCollection",
-  features: Object.entries(pricing).map(([name, zipcodes]) => {
+  features: Object.entries(pricing).map(([name, zipcodes], i) => {
     const features = j.features.filter((f) =>
       zipcodes.map(String).includes(f.properties.ZCTA5CE10)
     );
     return {
-      properties: { name },
       ...features.reduce((acc, cur) => turf.union(acc, cur)),
+      properties: { name, fill: colors[i % colors.length] },
     };
   }),
 }));
